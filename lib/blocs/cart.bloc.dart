@@ -13,22 +13,19 @@ class CartBloc extends ChangeNotifier {
   add(CartItemModel item) {
     cart.add(item);
     calculateTotal();
+    notifyListeners();
   }
 
   itemInCart(CartItemModel item) {
     var result = false;
-    cart.forEach(
-      (x) {
-        if (item.id == x.id) result == true;
-      },
-    );
+    for (var x in cart) {
+      if (item.id == x.id) result == true;
+    }
     return result;
   }
 
   increase(CartItemModel item) {
-    if (item.quantity! < 10) {
-      item.quantity! + 1;
-    }
+    item.quantity! + 1;
     calculateTotal();
   }
 
@@ -46,9 +43,11 @@ class CartBloc extends ChangeNotifier {
 
   calculateTotal() {
     total = 0;
-    cart.forEach((x) {
+    for (var x in cart) {
       total += (x.price! * x.quantity!);
+    }
+    Future.delayed(Duration.zero, () {
+      notifyListeners();
     });
-    notifyListeners();
   }
 }
