@@ -1,6 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:shopping/models/product-list-item.model.dart';
 import 'package:shopping/ui/shared/widgets/product/product-card.widget.dart';
 import 'package:shopping/ui/shared/widgets/shared/loaders.widget.dart';
@@ -8,11 +6,11 @@ import 'package:shopping/ui/shared/widgets/shared/loaders.widget.dart';
 class ProductList extends StatelessWidget {
   final List<ProductListItemModel>? products;
 
-  ProductList({required this.products});
+  const ProductList({Key? key, required this.products}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 410,
       child: Loader(
         object: products,
@@ -27,7 +25,7 @@ class ProductList extends StatelessWidget {
       itemCount: products!.length,
       itemBuilder: (context, index) {
         return Padding(
-          padding: EdgeInsets.all(5),
+          padding: const EdgeInsets.all(5),
           child: ProductCard(item: products![index]),
         );
       },

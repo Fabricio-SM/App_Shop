@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_typing_uninitialized_variables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping/blocs/cart.bloc.dart';
@@ -14,6 +12,8 @@ class CartPage extends StatelessWidget {
   var bloc;
   final price = NumberFormat("#,##0.00", "pt_BR");
   var items = <CartItemModel>[];
+
+  CartPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -48,15 +48,15 @@ class CartPage extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {},
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStatePropertyAll(
+                          Theme.of(context).primaryColor),
+                    ),
                     child: Text(
                       "Checkout",
                       style: TextStyle(
                         color: Colors.white,
                       ),
-                    ),
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStatePropertyAll(
-                          Theme.of(context).primaryColor),
                     ),
                   ),
                 ],

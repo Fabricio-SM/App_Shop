@@ -1,9 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping/blocs/cart.bloc.dart';
@@ -12,7 +9,7 @@ import 'package:shopping/models/cart-item.model.dart';
 class CartItem extends StatelessWidget {
   final CartItemModel item;
 
-  CartItem({required this.item});
+  const CartItem({Key? key, required this.item}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -58,9 +55,7 @@ class CartItem extends StatelessWidget {
                   width: 120,
                   decoration: BoxDecoration(
                     color: Colors.black12,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(5),
-                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
                   ),
                   child: Row(
                     children: <Widget>[
@@ -69,8 +64,7 @@ class CartItem extends StatelessWidget {
                         alignment: Alignment.center,
                         child: TextButton(
                           onPressed: bloc.decrease(item),
-                          child: Text("-"),
-                        ),
+                          child: Text("-"),),
                       ),
                       Container(
                         width: 40,

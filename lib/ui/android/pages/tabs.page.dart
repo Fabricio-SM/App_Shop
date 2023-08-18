@@ -7,6 +7,8 @@ import 'package:shopping/ui/android/pages/cart.page.dart';
 import 'package:shopping/ui/android/pages/home.page.dart';
 
 class TabsPage extends StatelessWidget {
+  const TabsPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     var bloc = Provider.of<CartBloc>(context);

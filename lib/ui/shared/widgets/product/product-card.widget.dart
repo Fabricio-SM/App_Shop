@@ -1,7 +1,6 @@
 // ignore_for_file: import_of_legacy_library_into_null_safe
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
 import 'package:intl/intl.dart';
 import 'package:shopping/models/product-list-item.model.dart';
 import 'package:shopping/ui/android/pages/product.page.dart';
@@ -10,17 +9,17 @@ import 'package:shopping/ui/shared/widgets/shared/add-to-cart.widget.dart';
 class ProductCard extends StatelessWidget {
   final ProductListItemModel item;
 
-  ProductCard({required this.item});
+  const ProductCard({Key? key, required this.item}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final price = NumberFormat("#,##0.00", "pt-BR");
     return Container(
-      margin: EdgeInsets.all(5),
+      margin: const EdgeInsets.all(5),
       width: 240,
       decoration: BoxDecoration(
         color: Colors.black.withOpacity(0.03),
-        borderRadius: BorderRadius.all(
+        borderRadius: const BorderRadius.all(
           Radius.circular(5),
         ),
       ),
@@ -33,7 +32,7 @@ class ProductCard extends StatelessWidget {
               height: 240,
               decoration: BoxDecoration(
                 color: Colors.black.withOpacity(0.05),
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(5),
                   topRight: Radius.circular(5),
                 ),
@@ -52,47 +51,47 @@ class ProductCard extends StatelessWidget {
             },
           ),
           Container(
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
               left: 10,
               right: 10,
             ),
             height: 60,
             child: Text(
               item.title!,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w300,
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           Padding(
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
               left: 10,
               right: 10,
             ),
             child: Text(
               item.brand!,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w300,
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           Padding(
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
               left: 10,
               right: 10,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Container(
+                SizedBox(
                   width: 120,
                   child: Text(
                     "R\$ ${price.format(item.price)}",

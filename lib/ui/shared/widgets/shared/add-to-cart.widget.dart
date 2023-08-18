@@ -9,7 +9,7 @@ import 'package:shopping/models/product-list-item.model.dart';
 class AddToCart extends StatelessWidget {
   final ProductListItemModel item;
 
-  AddToCart({required this.item});
+  const AddToCart({Key? key, required this.item}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class AddToCart extends StatelessWidget {
 
     if (bloc.itemInCart(cartItem)) {
       // se o item não tiver no carrinho ..
-      return Container(
+      return SizedBox(
         width: 80,
         height: 40,
         child: TextButton(
@@ -49,7 +49,7 @@ class AddToCart extends StatelessWidget {
         ),
       );
     } else {
-      return Container(
+      return SizedBox(
         width: 80,
         height: 40,
         child: TextButton(

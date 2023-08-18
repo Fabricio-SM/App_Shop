@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:shopping/models/product-details.model.dart';
 import 'package:shopping/repositories/product.repository.dart';
 import 'package:shopping/ui/shared/widgets/shared/progress-indicator.widget.dart';
@@ -9,7 +7,7 @@ class ProductPage extends StatelessWidget {
   final String tag;
   final _repository = ProductRepository();
 
-  ProductPage({required this.tag});
+  ProductPage({Key? key, required this.tag}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +19,10 @@ class ProductPage extends StatelessWidget {
 
         switch (snapshot.connectionState) {
           case ConnectionState.none:
-            return Text("Aguardando...");
+            return const Text("Aguardando...");
           case ConnectionState.active:
           case ConnectionState.waiting:
-            return Center(
+            return const Center(
               child: GenericProgressIndicator(),
             );
           case ConnectionState.done:
@@ -49,7 +47,7 @@ class ProductPage extends StatelessWidget {
         itemBuilder: (BuildContext ctxt, int index) {
           return Column(
             children: <Widget>[
-              Container(
+              SizedBox(
                 width: 300,
                 child: Image.network(
                   product.images![index],

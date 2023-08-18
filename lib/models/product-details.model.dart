@@ -29,21 +29,21 @@ class ProductDetailsModel {
     brand = json['brand'];
     images = json['images'].cast<String>();
     category = json['category'] != null
-        ? new CategoryModel.fromJson(json['category'])
+        ? CategoryModel.fromJson(json['category'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['title'] = this.title;
-    data['tag'] = this.tag;
-    data['price'] = this.price;
-    data['description'] = this.description;
-    data['brand'] = this.brand;
-    data['images'] = this.images;
-    if (this.category != null) {
-      data['category'] = this.category?.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['title'] = title;
+    data['tag'] = tag;
+    data['price'] = price;
+    data['description'] = description;
+    data['brand'] = brand;
+    data['images'] = images;
+    if (category != null) {
+      data['category'] = category?.toJson();
     }
     return data;
   }

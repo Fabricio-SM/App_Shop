@@ -19,21 +19,21 @@ class HomeBloc extends ChangeNotifier {
 
   getCategories() {
     categoryRepository.getAll().then((data) {
-      this.categories = data;
+      categories = data;
       notifyListeners();
     });
   }
 
   getProducts() {
     productRepository.getAll().then((data) {
-      this.products = data;
+      products = data;
       notifyListeners();
     });
   }
 
   getProductsByCategory() {
     productRepository.getByCategory(selectedCategory).then((data) {
-      this.products = data;
+      products = data;
       notifyListeners();
     });
   }

@@ -7,6 +7,8 @@ import 'package:shopping/ui/shared/widgets/category/category-list.widget.dart';
 import 'package:shopping/ui/shared/widgets/product/product-list.widget.dart';
 
 class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final HomeBloc bloc = Provider.of<HomeBloc>(context);
